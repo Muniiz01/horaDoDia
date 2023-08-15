@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: bisque;
+            font: normal 16pt arial;
+            text-align: center;
+        }
+
+        .center {
+            position: relative;
+            width: 750px;
+            margin: 0 auto;
+            top: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+            background-color: aliceblue;
+        }
+
+        .horarioLo {
+            font: normal 20pt Arial;
+        }
+        div{
+            padding: 15px;
+        }
+        img{
+            border-radius: 100px;
+        }
+    </style>
+</head>
+
+<body onload="carregar()">
+    <h1 id="fonco">Hora do Dia</h1>
+    <section class="center">
+
+        <div class="horarioLo" id="msg">
+
+        </div>
+
+        <div class="imagen" id="foto">
+            <img src="bomDia.jpg" alt="" id="imagem">
+        </div>
+
+    </section>
+    <script>
+        function carregar() {
+
+            var msg = window.document.getElementById('msg')
+            var foto = window.document.getElementById('imagem')
+            var data = new Date()
+            var hora = data.getHours()
+            var minuto = data.getMinutes()
+            msg.innerHTML = `agora sao ${hora}:${minuto}`
+             
+            if(hora >= 5 && hora < 12){
+                //bom dia
+                console.log('bom dia')
+                foto.src = 'bomDia.jpg'
+                document.body.style.background = '#fdd17d'
+
+            }else if(hora >= 12 && hora < 18){
+                //boa tarde
+                console.log('boa tarde')
+                foto.src = 'boaTarde.jpg'
+                document.body.style.background = '#f4a703'
+            }else if(hora >= 18){
+                //Boa noite
+                console.log('boa noite')
+                foto.src = 'boaNoite.jpg'
+                document.body.style.background = '#1b233f'
+                document.getElementById('fonco').style.color = 'white'
+                
+            } else{
+                //Boa madruga
+                console.log('boa madruga')
+                foto.src = 'boaMadruga.jpg'
+                document.body.style.background = '#403c3d'
+                document.getElementById('fonco').style.color = 'white'
+            }
+        }
+
+    </script>
+</body>
+
+</html>
